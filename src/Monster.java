@@ -17,14 +17,15 @@ public class Monster {
     MonsterType monsterType; // variable declaration
 
 
-    public Monster(int minHP, int maxHP, int monsterXP, String sound, String monsterName, MonsterType monsterType) {
+    public Monster(int minHP, int maxHP, int monsterXP, String sound,
+                   String monsterName, MonsterType monsterType) {
         this.minHP = minHP;
         this.maxHP = maxHP;
         this.monsterXP = monsterXP;
         this.sound = sound;
         this.monsterName = monsterName;
+        // TODO generate monster type
         this.monsterType = monsterType;
-
         this.monsterHP = generateMonsterHP();
     }
 
@@ -33,6 +34,13 @@ public class Monster {
         Random r = new Random();
         monsterHP = r.nextInt(maxHP - minHP) + minHP;
         return monsterHP;
+    }
+
+    public MonsterType generateMonster() {
+        // picks random monster type from MonsterType
+
+        return MonsterType.DRAGON;
+
     }
 
     @Override
