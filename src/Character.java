@@ -12,6 +12,10 @@ public class Character extends Combat {
         this.characterName = characterName;
     }
 
+    public String getCharacterName() {
+        return characterName;
+    }
+
     public int dodge() {
         int roll = 1 + 2 + 3; // redundant
         return roll;

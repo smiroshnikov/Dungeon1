@@ -2,10 +2,17 @@ import java.util.Random;
 
 public class Monster {
     final static String[] COLORS = {"yellow", "black", "red", "blue"};
-    final static String[] WEAPONS = {"2H Axe", "Spear & Shield", "Crossbow"};
 
-    public enum MonsterType { // definition
-        GOBLIN, KOBOLD, DRAGON
+
+    public enum MonsterWeapon {
+        AXE, SWORD, BOW, CROSSBOW, WHIP,
+        CLUB, STONE
+    }
+
+    public enum MonsterType {
+        GOBLIN, KOBOLD, DRAGON, TROLL, HORSE,
+        OOZE, DEMON, BEHOLDER, ELEMENTAL, RAT,
+        SHEEP, WARPIG, ELEPHANT
     }
 
     private int minHP;
@@ -15,6 +22,7 @@ public class Monster {
     private String monsterName;
     private int monsterHP;
     private MonsterType monsterType; // variable declaration
+    private MonsterWeapon monsterWeapon;
 
 
     public Monster(int minHP, int maxHP, int monsterXP, String sound,
@@ -25,9 +33,14 @@ public class Monster {
         this.sound = sound;
         this.monsterName = monsterName;
         // TODO generate monster type
-
         this.monsterHP = generateMonsterHP();
         this.monsterType = generateMonster();
+        this.monsterWeapon = pickMonsterWeapon();
+    }
+
+    private MonsterWeapon pickMonsterWeapon() {
+        Random r = new Random(); // Re-use ? 1 random per class ? Max
+        return MonsterWeapon.values()[new Random().nextInt(MonsterWeapon.values().length)];
     }
 
 
@@ -38,16 +51,15 @@ public class Monster {
     }
 
     public MonsterType generateMonster() {
-        // picks random monster type from MonsterType
+        // TODO a better understanding of this line
         return MonsterType.values()[new Random().nextInt(MonsterType.values().length)];
-        //return Letter.values()[new Random().nextInt(Letter.values().length)];
-
-        //return MonsterType.DRAGON;
     }
 
     @Override
     public String toString() {
-        return "An angry " + monsterType + " named  \n" + monsterName + ", that has " + monsterHP + "HP and will grant  " + monsterXP + " xp if you defeat it ! ";
+        return "an angry " + monsterType + " named  \n" + monsterName + ", " +
+                "that has " + monsterHP + " HP, armed with " + monsterWeapon + "!"
+                + "\nEnemy will grant " + monsterXP + "xp if defeated! \n";
     }
 
 }
