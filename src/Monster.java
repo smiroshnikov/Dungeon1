@@ -11,6 +11,7 @@ public class Monster {
         this.sound = sound;
         this.monsterName = monsterName;
         this.monsterType = monsterType;
+        this.monsterHP = getMonsterHP();
     }
 
     private int minHP;
