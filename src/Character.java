@@ -1,11 +1,9 @@
-/**
- * should be child of combat ?
- */
+// TODO maybe getDirectoin should be moved to narration ? or split ?
 public class Character extends Combat {
     private String characterName;
-    private int atack_limit = 10;
-    private int xp = 0;
-    private int baseHp = 10;
+    private int atack_limit = 10; // NYI
+    private int xp = 0; // NYI
+    private int baseHp = 10; // NYI
     private static final String[] chosenPath = {"Right", "Left"};
 
     public Character(String characterName) {
