@@ -11,7 +11,7 @@ public class Monster {
         this.sound = sound;
         this.monsterName = monsterName;
         this.monsterType = monsterType;
-        this.monsterHP = getMonsterHP();
+        this.monsterHP = generateMonsterHP();
     }
 
     private int minHP;
@@ -24,7 +24,7 @@ public class Monster {
 
     private int monsterHP;
 
-    public int getMonsterHP() {
+    public int generateMonsterHP() {
         Random r = new Random();
         monsterHP = r.nextInt(maxHP - minHP) + minHP;
         return monsterHP;
