@@ -1,4 +1,4 @@
-public class EnumExample {
+public class EnumExample { // Structure
     public enum Day { // definition
         SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
         THURSDAY, FRIDAY, SATURDAY
