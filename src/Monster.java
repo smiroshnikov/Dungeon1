@@ -14,19 +14,20 @@ public class Monster {
     private String sound;
     private String monsterName;
     private int monsterHP;
-    MonsterType monsterType; // variable declaration
+    private MonsterType monsterType; // variable declaration
 
 
     public Monster(int minHP, int maxHP, int monsterXP, String sound,
-                   String monsterName, MonsterType monsterType) {
+                   String monsterName) {
         this.minHP = minHP;
         this.maxHP = maxHP;
         this.monsterXP = monsterXP;
         this.sound = sound;
         this.monsterName = monsterName;
         // TODO generate monster type
-        this.monsterType = monsterType;
+
         this.monsterHP = generateMonsterHP();
+        this.monsterType = generateMonster();
     }
 
 
@@ -38,14 +39,15 @@ public class Monster {
 
     public MonsterType generateMonster() {
         // picks random monster type from MonsterType
+        return MonsterType.values()[new Random().nextInt(MonsterType.values().length)];
+        //return Letter.values()[new Random().nextInt(Letter.values().length)];
 
-        return MonsterType.DRAGON;
-
+        //return MonsterType.DRAGON;
     }
 
     @Override
     public String toString() {
-        return " " + " named  " + monsterName + ", that has " + monsterHP + "HP and will grant  " + monsterXP + " xp if you defeat it ! ";
+        return "An angry " + monsterType + " named  \n" + monsterName + ", that has " + monsterHP + "HP and will grant  " + monsterXP + " xp if you defeat it ! ";
     }
 
 }
