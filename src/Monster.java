@@ -7,11 +7,12 @@ public class Monster {
         // used during monster instantiation pseudo-random
         // TODO damage calculation / random ? / hardcoded ?
         AXE, SWORD, BOW, CROSSBOW, WHIP,
-        CLUB, STONE, CLAWS, TEETH
+        CLUB, STONE, CLAWS, TEETH, BREATH
     }
 
-    public enum NaturalWeapon {
-        CLAW, TEETH, SPIKES, SPIT, EYEBEAM
+    public enum SpecialWeapons {
+        // TODO HOW CAN I choose from different enums in one method ?
+        SPIKES, SPIT, EYEBEAM, BREATH
     }
 
     public enum MonsterType {
@@ -19,7 +20,7 @@ public class Monster {
         // TODO why this is important ?! What monster types affect besides narration ?
         GOBLIN, KOBOLD, DRAGON, TROLL, HORSE,
         OOZE, DEMON, BEHOLDER, ELEMENTAL, RAT,
-        SHEEP, WARPIG, ELEPHANT
+        SHEEP, ORC, ELEPHANT
     }
 
     private int minHP; // for random monster HP
@@ -35,6 +36,7 @@ public class Monster {
     // TODO Weapons should be natural or armed
     // TODO Monster should have boolean canWieldWeapon
     // TODO One random to rule them all
+    // TODO enum of arrays ? Need make a better implementation if I want to control those flows
 
     public Monster(int minHP, int maxHP, int monsterXP, String sound, String monsterName) {
         this.minHP = minHP;
@@ -48,28 +50,23 @@ public class Monster {
     }
 
     private MonsterWeapon pickMonsterWeapon(MonsterType monsterType) {
-        //Random r = new Random(); // Re-use ? 1 random per class ? Max?
         switch (monsterType) {
+
             case SHEEP:
             case RAT:
+            case HORSE:
+            case ELEPHANT:
             case OOZE:
-            case WARPIG:
-                return MonsterWeapon.CLAWS;
+                return MonsterWeapon.TEETH;
+
             case BEHOLDER:
             case DRAGON:
             case ELEMENTAL:
-            case ELEPHANT:
-            case HORSE:
-                return MonsterWeapon.TEETH;
+                return MonsterWeapon.CLAWS;
+
             default:
                 return MonsterWeapon.values()[r.nextInt(MonsterWeapon.values().length)];
         }
-
-    }
-
-    private NaturalWeapon pickMonsterWeapon(NaturalWeapon naturalWeapon) {
-        return NaturalWeapon.CLAW;
-
     }
 
     public int generateMonsterHP() {
