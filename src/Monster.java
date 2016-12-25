@@ -1,14 +1,17 @@
 import java.util.Random;
 
 public class Monster {
-    final static String[] COLORS = {"yellow", "black", "red", "blue"}; // remove this
-
+    private Random r = new Random();
 
     public enum MonsterWeapon {
         // used during monster instantiation pseudo-random
         // TODO damage calculation / random ? / hardcoded ?
         AXE, SWORD, BOW, CROSSBOW, WHIP,
-        CLUB, STONE
+        CLUB, STONE, CLAWS, TEETH
+    }
+
+    public enum NaturalWeapon {
+        CLAW, TEETH, SPIKES, SPIT, EYEBEAM
     }
 
     public enum MonsterType {
@@ -29,9 +32,11 @@ public class Monster {
     // TODO dragons have claws , rats do not wield bows
     private MonsterWeapon monsterWeapon; //(SWORD,AXE etc...)  random weapon pick
 
+    // TODO Weapons should be natural or armed
+    // TODO Monster should have boolean canWieldWeapon
+    // TODO One random to rule them all
 
-    public Monster(int minHP, int maxHP, int monsterXP,
-                   String sound, String monsterName) {
+    public Monster(int minHP, int maxHP, int monsterXP, String sound, String monsterName) {
         this.minHP = minHP;
         this.maxHP = maxHP;
         this.monsterXP = monsterXP;
@@ -39,18 +44,36 @@ public class Monster {
         this.monsterName = monsterName;
         this.monsterHP = generateMonsterHP();
         this.monsterType = generateMonster();
-        this.monsterWeapon = pickMonsterWeapon();
+        this.monsterWeapon = pickMonsterWeapon(monsterType);
     }
 
-    private MonsterWeapon pickMonsterWeapon() {
-        Random r = new Random(); // Re-use ? 1 random per class ? Max?
-        return MonsterWeapon.values()[new Random().nextInt(MonsterWeapon.values().length)];
+    private MonsterWeapon pickMonsterWeapon(MonsterType monsterType) {
+        //Random r = new Random(); // Re-use ? 1 random per class ? Max?
+        switch (monsterType) {
+            case SHEEP:
+            case RAT:
+            case OOZE:
+            case WARPIG:
+                return MonsterWeapon.CLAWS;
+            case BEHOLDER:
+            case DRAGON:
+            case ELEMENTAL:
+            case ELEPHANT:
+            case HORSE:
+                return MonsterWeapon.TEETH;
+            default:
+                return MonsterWeapon.values()[r.nextInt(MonsterWeapon.values().length)];
+        }
+
     }
 
+    private NaturalWeapon pickMonsterWeapon(NaturalWeapon naturalWeapon) {
+        return NaturalWeapon.CLAW;
+
+    }
 
     public int generateMonsterHP() {
-        // return random HP per instantiation
-        Random r = new Random(); // can I reuse seed ? Should I ?
+        // returns random HP per Monster instantiation
         monsterHP = r.nextInt(maxHP - minHP) + minHP;
         return monsterHP;
     }
@@ -58,7 +81,7 @@ public class Monster {
     public MonsterType generateMonster() {
         // TODO a better understanding of this line
         // returns random weapon pick
-        // TODO make picks depend on moster types
+        // TODO make picks depend on monster types
         return MonsterType.values()[new Random().nextInt(MonsterType.values().length)];
     }
 
