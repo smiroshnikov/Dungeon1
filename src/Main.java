@@ -47,9 +47,11 @@ public class Main {
 //        System.out.printf("%s %s %nand encountered %s %n", player.getCharacterName(),
 //                player.getDirection('s'), gagog.toString());R
         narrator.showClassGreeting();
-        narrator.getUserInput();
+        String s = narrator.getUserInput();
+        char c = narrator.normalizeUserInput(s);
+        narrator.playerClassDescription(c);
         // this is way too fucking twisted, need help here !
-        narrator.playerClassDescription(narrator.normalizeUserInput(narrator.getUserInput()));
+        //narrator.playerClassDescription(narrator.normalizeUserInput(narrator.getUserInput()));
 
 
     }
