@@ -7,7 +7,7 @@ public class Monster {
         // used during monster instantiation pseudo-random
         // TODO damage calculation / random ? / hardcoded ?
         AXE, SWORD, BOW, CROSSBOW, WHIP,
-        CLUB, STONE, CLAWS, TEETH, BREATH
+        CLUB, STONE, CLAWS, TEETH
     }
 
     public enum SpecialWeapons {
@@ -51,19 +51,16 @@ public class Monster {
 
     private MonsterWeapon pickMonsterWeapon(MonsterType monsterType) {
         switch (monsterType) {
-
             case SHEEP:
             case RAT:
             case HORSE:
             case ELEPHANT:
-            case OOZE:
                 return MonsterWeapon.TEETH;
-
-            case BEHOLDER:
-            case DRAGON:
-            case ELEMENTAL:
-                return MonsterWeapon.CLAWS;
-
+            case ORC:
+                return MonsterWeapon.AXE;
+            case KOBOLD:
+            case GOBLIN:
+                return MonsterWeapon.SWORD;
             default:
                 return MonsterWeapon.values()[r.nextInt(MonsterWeapon.values().length)];
         }

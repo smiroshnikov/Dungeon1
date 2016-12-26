@@ -1,10 +1,14 @@
-// TODO maybe getDirectoin should be moved to narration ? or split ?
+// TODO maybe getDirection should be moved to narration ? or split ?
+
+
 public class Character extends Combat {
+
     private String characterName;
-    private int atack_limit = 10; // NYI
+    private int attackRoll = 20;
     private int xp = 0; // NYI
     private int baseHp = 10; // NYI
     private static final String[] chosenPath = {"North", "South", "West", "East"};
+
 
     public Character(String characterName) {
         this.characterName = characterName;
@@ -12,16 +16,6 @@ public class Character extends Combat {
 
     public String getCharacterName() {
         return characterName;
-    }
-
-    public int dodge() {
-        int roll = 1 + 2 + 3; // redundant
-        return roll;
-    }
-
-    public int attack() {
-        int roll = 3 + 4 + this.dodge(); // redundant
-        return roll;
     }
 
     public String getDirection(char userInput) {
