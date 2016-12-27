@@ -34,7 +34,7 @@ public class Character extends Combat {
                 return "went " + chosenPath[3];
             }
             default:
-                return "ran at random as a scared as little bitch... ";
+                return " озираясь по сторонам перебирал трясущимися от ужаса ногами, и бежал в случайном направлении...";
         }
     }
 }

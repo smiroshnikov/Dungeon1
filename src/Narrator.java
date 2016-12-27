@@ -24,9 +24,9 @@ public class Narrator {
     public void playerClassDescription(char choice) {
         switch (choice) {
             case 'w': {
-                System.out.println("Воин, это вам не какой-то щуплый дрыщь ! \n" +
-                        "Топорищем по еблищу вот твой девиз ! \n" +
-                        "Начинает игру с Кувалдой \"Молот Инвалидов\"");
+                System.out.println("Воин, это вам не щуплый дрыщь ! \n" +
+                        "Топорищем по еблищу Бдыщь! Бдыщь! Бдыщь!!! \n" +
+                        "Начинает игру с кувалдой \"Молот Инвалидов\"");
                 break;
             }
             case 'm': {
