@@ -2,8 +2,10 @@ import java.util.Random;
 
 public class Monster {
     private Random r = new Random();
+    private Weapon weapon = new Weapon();
 
     public enum MonsterWeapon {
+        // TODO replace
         // used during monster instantiation pseudo-random
         // TODO damage calculation / random ? / hardcoded ?
         AXE, SWORD, BOW, CROSSBOW, WHIP,
@@ -47,9 +49,12 @@ public class Monster {
         this.monsterHP = generateMonsterHP();
         this.monsterType = generateMonster();
         this.monsterWeapon = pickMonsterWeapon(monsterType);
+        //this.monsterWeapon = weapon.pickWeapon(monsterType)
+
     }
 
     private MonsterWeapon pickMonsterWeapon(MonsterType monsterType) {
+        /* TODO replace */
         switch (monsterType) {
             case SHEEP:
             case RAT:
@@ -81,8 +86,11 @@ public class Monster {
 
     @Override
     public String toString() {
+        // narrator functionality ?!
         return "an angry " + monsterType + " named  \n" + monsterName + ", " +
                 "that has " + monsterHP + " HP, armed with " + monsterWeapon + "!"
                 + "\nEnemy will grant " + monsterXP + "xp if defeated! \n";
     }
+
+
 }

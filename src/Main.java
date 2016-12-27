@@ -5,14 +5,6 @@ public class Main {
     public static void main(String[] args) {
         Narrator narrator = new Narrator();
 
-        /*// FLOW*
-        / Generate Player
-        / Get Direction
-        / Instantiate a monster
-        / fight
-        / repeat
-         */
-
         // TODO randomize this
         // TODO how to I instantiate a 1000 Monsters at once ? Max?
         // TODO array of Objects ?
@@ -48,10 +40,10 @@ public class Main {
         System.out.printf("%s %s %nand encountered %s %n", player.getCharacterName(),
                 player.getDirection('s'), gagog.toString());
 
-        narrator.showClassGreeting();
-        String n = narrator.getUserInput();
-        char c = narrator.normalizeUserInput(n);
-        narrator.playerClassDescription(c);
+//        narrator.showClassGreeting();
+//        String n = narrator.getUserInput();
+//        char c = narrator.normalizeUserInput(n);
+//        narrator.playerClassDescription(c);
         // this is way too fucking twisted, need help here !
         //narrator.playerClassDescription(narrator.normalizeUserInput(narrator.getUserInput()));
 
